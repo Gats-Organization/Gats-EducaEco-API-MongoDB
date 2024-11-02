@@ -21,8 +21,7 @@ public class ResultadosService {
 
     public Resultado adicionarResultado(String nome, String email, String resultado) {
         ZonedDateTime dataHoraBrasilia = ZonedDateTime.now(ZoneId.of("America/Sao_Paulo"));
-        Date dataHora = Date.from(dataHoraBrasilia.toInstant());
-        Resultado novoResultado = new Resultado(nome, email, dataHora, resultado);
+        Resultado novoResultado = new Resultado(nome, email, dataHoraBrasilia.toLocalDateTime(), resultado);
         return resultadoRepository.save(novoResultado);
     }
 }
