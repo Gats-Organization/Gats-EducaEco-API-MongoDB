@@ -19,9 +19,7 @@ public class ResultadoController {
     @Operation(summary = "Adicionar um novo resultado", description = "Cria um novo resultado com nome, email e o resultado do formulário")
     @PostMapping("/adicionar")
     public Resultado adicionarResultado(
-            @Parameter(description = "Nome do participante", example = "João Silva") @RequestParam String nome,
-            @Parameter(description = "Email do participante", example = "joao.silva@example.com") @RequestParam String email,
-            @Parameter(description = "Resultado do formulário", example = "Estundantil") @RequestParam String resultado) {
-        return resultadosService.adicionarResultado(nome, email, resultado);
+            @Parameter(description = "Dados do participante", required = true) @RequestBody Resultado resultado) {
+        return resultadosService.adicionarResultado(resultado.getNome(), resultado.getEmail(), resultado.getResultado());
     }
 }
